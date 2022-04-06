@@ -10,9 +10,13 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
 
-    # your code goes here
-
-    return 'Contents of your file as one long string'
+    full_file = open(file_path).read()
+    text_string = full_file.split()
+    
+    print(text_string)
+    return text_string
+    
+    #'Contents of your file as one long string'
 
 
 def make_chains(text_string):
@@ -41,11 +45,25 @@ def make_chains(text_string):
     """
 
     chains = {}
+    pairs = ()
+
+    #words = text_string.split()d
+    for i in range(0,len(text_string)-2):
+        #create pair in tuple
+        found = []
+        pairs = (text_string[i], text_string[i+1]) 
+        #add tuple as a key to the chains dictionary
+        for j in range(0,len(text_string)-2):
+            text_pair = (text_string[j], text_string[j+1])
+            if text_pair == pairs:
+                value_to_add = text_string[j+2]
+                found.append(value_to_add)
+        chains[pairs] = found
+            #return
+    print(chains)
 
     # your code goes here
-
     return chains
-
 
 def make_text(chains):
     """Return text from chains."""
@@ -69,3 +87,5 @@ chains = make_chains(input_text)
 random_text = make_text(chains)
 
 print(random_text)
+open_and_read_file(input_path)
+
